@@ -121,6 +121,7 @@ Java Enterprise Online Project
 
 #### HTML, JavaScript, CSS 
 - [Справочник по WEB](https://developer.mozilla.org/ru/)
+- [Видео по WEb технологиям](https://www.youtube.com/user/WebMagistersRu/playlists)
 - [Изучение JavaScript в одном видео уроке за час](https://www.youtube.com/watch?v=QBWWplFkdzw)
 - <a href="http://www.w3schools.com/default.asp">HTML, CSS, JAVASCRIPT, SQL, JQUERY, BOOTSTRAP</a>
 - <a href="https://www.youtube.com/watch?v=j0ycGQKqMT4">Введение в программирование на JavaScript</a>
