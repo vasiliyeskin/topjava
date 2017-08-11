@@ -25,10 +25,6 @@ public class UserMealsUtil {
         );
         List<UserMealWithExceed> userMealWithExceeds = getFilteredWithExceeded(mealList, LocalTime.of(7, 0),
                 LocalTime.of(13, 1), 2000);
-
-        for (UserMealWithExceed userMeal : userMealWithExceeds) {
-            System.out.println(userMeal);
-        }
     }
 
     public static List<UserMealWithExceed> getFilteredWithExceeded(List<UserMeal> mealList, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
