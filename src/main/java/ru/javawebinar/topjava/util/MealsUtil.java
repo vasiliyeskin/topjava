@@ -54,7 +54,7 @@ public class MealsUtil {
     }
 
     public static MealWithExceed createWithExceed(Meal meal, boolean exceeded) {
-        return new MealWithExceed(meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
+        return new MealWithExceed(meal.getId(),meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
     }
 
     public static List<MealWithExceed> getWithExceeded(List<Meal> meals)
@@ -66,5 +66,12 @@ public class MealsUtil {
             mealsWithExceeded.add(createWithExceed(m, flag));flag = !flag;
         }
         return mealsWithExceeded;
+    }
+
+    public static List<Meal> deleteMeal(int id, List<Meal> meals) {
+        List<Meal> meals2 = new ArrayList<>(meals);
+        meals2.removeIf(x->x.getId() == id);
+
+        return meals2;
     }
 }
