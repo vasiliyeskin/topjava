@@ -41,6 +41,7 @@ public class MealServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         log.debug("redirec to meals with table");
+        request.setCharacterEncoding("UTF-8");
 
         String action = request.getParameter("action");
         Meal editMeal = nullMeal;
@@ -67,6 +68,8 @@ public class MealServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         String s = request.getParameter("id_edit");
         int id = 0;
         if(s != "") id = Integer.parseInt(request.getParameter("id_edit"));
