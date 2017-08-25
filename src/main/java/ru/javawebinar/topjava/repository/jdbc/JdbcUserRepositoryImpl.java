@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -37,22 +38,25 @@ public class JdbcUserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
-        MapSqlParameterSource map = new MapSqlParameterSource()
+        /*MapSqlParameterSource map = new MapSqlParameterSource()
                 .addValue("id", user.getId())
                 .addValue("name", user.getName())
                 .addValue("email", user.getEmail())
                 .addValue("password", user.getPassword())
                 .addValue("registered", user.getRegistered())
                 .addValue("enabled", user.isEnabled())
-                .addValue("caloriesPerDay", user.getCaloriesPerDay());
+                .addValue("caloriesPerDay", user.getCaloriesPerDay());*/
+        BeanPropertySqlParameterSource parameters = new BeanPropertySqlParameterSource(user);
 
         if (user.isNew()) {
-            Number newKey = insertUser.executeAndReturnKey(map);
+//            Number newKey = insertUser.executeAndReturnKey(map);
+            Number newKey = insertUser.executeAndReturnKey(parameters);
             user.setId(newKey.intValue());
         } else {
             namedParameterJdbcTemplate.update(
                     "UPDATE users SET name=:name, email=:email, password=:password, " +
-                            "registered=:registered, enabled=:enabled, calories_per_day=:caloriesPerDay WHERE id=:id", map);
+                            "registered=:registered, enabled=:enabled, calories_per_day=:caloriesPerDay WHERE id=:id", parameters);
+//                            "registered=:registered, enabled=:enabled, calories_per_day=:caloriesPerDay WHERE id=:id", map);
         }
         return user;
     }
@@ -60,7 +64,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     @Override
     public boolean delete(int id) {
         return jdbcTemplate.update("DELETE FROM users WHERE id=?", id) != 0;
-    }
+}
 
     @Override
     public User get(int id) {
