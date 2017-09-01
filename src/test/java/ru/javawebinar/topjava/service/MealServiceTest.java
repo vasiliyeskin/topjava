@@ -1,6 +1,10 @@
 package ru.javawebinar.topjava.service;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +37,26 @@ public class MealServiceTest {
 
     @Autowired
     private MealService service;
+
+    @Rule
+    public ExpectedException ee = ExpectedException.none();
+
+    @Rule
+    public TestWatcher watcher = new TestWatcher() {
+
+        private long time = 0;
+
+        @Override
+        protected void starting(Description description) {
+            time = System.nanoTime();
+        }
+
+        @Override
+        protected void finished(Description description) {
+            System.out.println("*************** Duration " + (System.nanoTime() - time) + " in nsnoseconds");
+        }
+    };
+
 
     @Test
     public void testDelete() throws Exception {
@@ -70,8 +94,10 @@ public class MealServiceTest {
         MATCHER.assertEquals(updated, service.get(MEAL1_ID, USER_ID));
     }
 
-    @Test(expected = NotFoundException.class)
+
+    @Test
     public void testUpdateNotFound() throws Exception {
+        ee.expect(NotFoundException.class);
         service.update(MEAL1, ADMIN_ID);
     }
 
