@@ -8,14 +8,16 @@
          http://www.springframework.org/schema/cache
          http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-    <!-- enables scanning for @Cacheable annotation -->
-    <cache:annotation-driven/>
+    <beans profile="jpa,datajpa">
+        <!-- enables scanning for @Cacheable annotation -->
+        <cache:annotation-driven/>
 
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
-        p:cacheManager-ref="ehcache"/>
+        <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+              p:cacheManager-ref="ehcache"/>
 
-    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-        p:configLocation="classpath:cache/ehcache.xml"
-        p:shared="true"/>
+        <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+              p:configLocation="classpath:cache/ehcache.xml"
+              p:shared="true"/>
+    </beans>
 
 </beans>
