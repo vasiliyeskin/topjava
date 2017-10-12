@@ -7,6 +7,7 @@
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http pattern="/resources/**" security="none"/>
+    <http pattern="/.well-known/**" security="none"/>
     <http pattern="/webjars/**" security="none"/>
 
     <http pattern="/rest/**" use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
