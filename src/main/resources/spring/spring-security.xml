@@ -12,17 +12,17 @@
 
     <http pattern="/rest/**" use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
         <http-basic/>
-        <intercept-url pattern="/rest/admin/**" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/rest/admin/**" access="hasRole('ROLE_ADMIN')" requires-channel="https"/>
+        <intercept-url pattern="/**" access="isAuthenticated()" requires-channel="https"/>
         <csrf disabled="true"/>
     </http>
 
     <http>
-        <intercept-url pattern="/login" access="isAnonymous()"/>
-        <intercept-url pattern="/register" access="isAnonymous()"/>
+        <intercept-url pattern="/login" access="isAnonymous()"  requires-channel="https"/>
+        <intercept-url pattern="/register" access="isAnonymous()" requires-channel="https"/>
 
-        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')" requires-channel="https"/>
+        <intercept-url pattern="/**" access="isAuthenticated()" requires-channel="https"/>
 
         <form-login login-page="/login" default-target-url="/meals"
                     authentication-failure-url="/login?error=true"
