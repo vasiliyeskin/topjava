@@ -35,6 +35,7 @@
 ### 3. 
 Настройки Tomcat можно посмотреть по адресу https://tomcat.apache.org/tomcat-8.5-doc/ssl-howto.html
 Опишу ещё их здесь
+
 а).
 - В файл по адресу $CATALINA_BASE/conf/server.xml вставляем следующие строки (у меня $CATALINA_BASE это \JAVA\apache-tomcat-8.5.20)
 
