@@ -34,8 +34,7 @@
 а).
 - В файл по адресу $CATALINA_BASE/conf/server.xml вставляем следующие строки (у меня $CATALINA_BASE это \JAVA\apache-tomcat-8.5.20)
 
-<!-- Define a SSL Coyote HTTP/1.1 Connector on port 8443 -->
-<Connector
+         <Connector
            protocol="org.apache.coyote.http11.Http11NioProtocol"
            port="8443" maxThreads="200"
            scheme="https" secure="true" SSLEnabled="true"
