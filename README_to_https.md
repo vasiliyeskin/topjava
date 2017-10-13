@@ -25,7 +25,7 @@
 - Вводим интернет адрес вашего сайта + жмём "Create ...";
 - Жмём "Manually Verify";
 - Скачиваем безличный файл по ссылке "Download File #1";
-- В вашем проекте topjava создаём папочку  .well-known/acme-challenge в папке webapp. Не забудьте эту папку отметить в файле spring-security.xml как <http pattern="/.well-known/**" security="none"/> !
+- В вашем проекте topjava создаём папочку  .well-known/acme-challenge в папке webapp. Не забудьте эту папку отметить в файле spring-security.xml как "http pattern="/.well-known/**" security="none" !
 - Заливаете на ваш хост;
 - После чего жмём "Download SSL Certificate";
 - Скачается архив с 3мя файлами: ca_bundle.crt, certificate.crt, private.key;
