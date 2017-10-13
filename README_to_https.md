@@ -66,7 +66,7 @@
 - В принципе, это SSL можно использовать и для локального тестирования.
 
 ### 4. 
-Для работы с heroku Вам необходимо докупить возможность работы с SSL. Об этом недвусмысленно намекает надпис "Upgrade to paid dynos to configure Heroku SSL" в настройках.
+Для работы с heroku Вам необходимо докупить возможность работы с SSL. Об этом недвусмысленно намекает надпись "Upgrade to paid dynos to configure Heroku SSL" в настройках.
 - Установите себе Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli#download-and-install);
 - Залогинтесь из cmd: heroku login:
 - И залейте свои сертификаты, полученные в пункте 2: heroku certs:add ca_bundle.crt certificate.crt private.key --app {youapp}
